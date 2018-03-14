@@ -31,6 +31,12 @@ python lotsofItems.py
 ```
 python app.py
 ```
+4. Test the Application on 
+```
+http://localhost:8000/
+```
+
+
 [GitHub Repo](https://github.com/FatmaMagdy/Item-Catalog-Application.git)
 
 ### Notes

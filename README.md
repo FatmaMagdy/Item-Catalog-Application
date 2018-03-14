@@ -9,7 +9,9 @@ These instructions will get you a copy of the project up and running on your loc
 ## Installing
 
 > Install Vagrant and VirtualBox
+
 > Clone the fullstack-nanodegree-vm
+
 > Launch the Vagrant VM (vagrant up)
 
 
@@ -29,7 +31,7 @@ python lotsofItems.py
 ```
 python app.py
 ```
-[GitHub Repo](update me please)
+[GitHub Repo](https://github.com/FatmaMagdy/Item-Catalog-Application.git)
 
 ### Notes
 

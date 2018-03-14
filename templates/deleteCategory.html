@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Are you sure you want to delete {{deleted_category.name}}</h1>
+			<form action= "{{url_for('deleteCategory',categories_id = deleted_category.id)}}" method = 'POST'>
+				<input type='submit' value='Delete'>
+			</form>
+			<a href= "{{url_for('showCatalog')}}">Cancel</a>		
+		</div>
+	</div>
+
+{% endblock %}

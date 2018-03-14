@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+{% block content %}
+	
+	<div class="row">
+		<div class="col-md-6">
+			<h1>{{category.name}}'s items</h1>			
+		</div>
+	</div>
+
+	<!--MESSAGE FLASHING EXAMPLE -->
+	<div class="row">
+		<div class="col-md-6">
+			<a href = "{{url_for('newCategoryItem', categories_id = category.id)}}">Create New category Item</a>			
+		</div>
+	</div>
+
+	<div class="flash">
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+				{% for message in messages %}
+  					<li><strong>{{message}}</strong></li>
+  				{% endfor %}
+			</ul>
+		{% endif %}
+		{% endwith %}
+	</div>
+
+	{% for i in items %}
+
+	<div class="row">
+		<div class="col-md-4">
+			<p>{{i.name}}</p>
+			<p>{{i.price}}</p>
+			<p>{{i.description}}</P>
+			<a href ="{{url_for('editCategoryItem', categories_id = category.id, items_id = i.id)}}">Edit</a>
+			</br>
+			<a href ="{{url_for('deleteCategoryItem', categories_id = category.id , items_id = i.id)}}">Delete</a>
+		</div>
+	</div>
+
+	{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block content %}
+
+	<div class="row">
+		<div class="col-md-2">
+			<a href="{{url_for('showLogin')}}">
+				<button class="btn btn-default" id="login">
+					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Login
+				</button>
+			</a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			<h1>{{ category.name }}</h1>
+		</div>	
+	</div>	
+
+	<div class="row">
+		<div class="col-md-4">
+			<h2>Items</h2>			
+		</div>	
+	</div>
+
+	{% for i in items %}
+		<div class="row">
+			<div class="col-md-4">
+				<h3>{{i.name}}</h3>
+				<p>{{i.description}}</p>
+				<p>{{i.price}}</p>
+			</div>
+		</div>
+
+	{% endfor %}
+
+{% endblock %}

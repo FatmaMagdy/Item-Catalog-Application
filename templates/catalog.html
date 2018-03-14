@@ -1,0 +1,84 @@
+{% extends "main.html" %}
+{% block content %}
+
+
+		<div class="row header">
+    		<div class="col-md-10">
+				<h1>Categories</h1>
+			</div>
+			<div class="col-md-2">
+				<a href="{{url_for('gdisconnect')}}">
+					<button class="btn btn-default" id="login">
+						<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Log out
+					</button>
+				</a>
+			</div>
+		</div>
+		
+		<!--This is to draw a Line-->
+    	<div class="row">
+      		<div class="col-md-12">
+        		<hr>
+      		</div>
+    	</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<a href = "{{url_for('newCategory', categories = categories)}}">
+					<button class="btn btn-default" id="new-category">
+						<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Add Category
+					</button>
+				</a>
+			</div>			
+		</div>
+		</br>
+	<!--MESSAGE FLASHING EXAMPLE -->
+		<div class="flash">
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul>
+					{% for message in messages %}
+  					<li><strong>{{message}}</strong></li>
+  					{% endfor %}
+				</ul>
+			{% endif %}
+			{% endwith %}
+		</div>
+
+
+		{% for category in categories %}
+		<div class="row">
+			<div class="col-md-6">
+				<h2>{{category.name}}</h2>
+			</div>
+		</div>		
+
+
+		<div class="row">
+			<div class="col-md-2">
+				<a href="{{url_for('showItems', categories_id = category.id)}}">
+					<button class="btn btn-default" id="new-category">
+						<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Items
+					</button>
+				</a>
+			</div>	
+	
+			<div class="col-md-2">	
+				<a href="{{url_for('editCategory', categories_id = category.id)}}">
+					<button class="btn btn-default" id="new-category">
+						<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Edit
+					</button>
+				</a>			
+			</div>
+
+			<div class="col-md-2">	
+				<a href="{{url_for('deleteCategory', categories_id = category.id)}}">
+					<button class="btn btn-default" id="new-category">
+						<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Delete
+					</button>
+				</a>			
+			</div>			
+		</div>
+		</br>
+		{% endfor %}
+	{% endblock %}	

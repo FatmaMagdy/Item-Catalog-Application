@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row">
+		<div class="col-md-6">
+			<h1> New Category Item </h1>			
+		</div>
+	</div>
+
+	<div class="row">
+			<div class="col-md-6">
+				<form action="{{url_for('newCategoryItem', categories_id = category.id)}}" method = 'POST'>
+					<p>Name:</p>
+					<input type = "text" name = "name" placeholder ="{{name}}">
+					</br>
+					<p>Description:</p>
+					<input type = "text" name = "description" placeholder = "{{description}}">
+					</br>
+					<p>price:</p>
+					<input type = "text" name = "price" placeholder = "{{price}}">
+					</br>
+					<input type = 'submit' value = 'create'>
+				</form>
+				</a>
+			</div>			
+		</div>
+
+
+{% endblock %}

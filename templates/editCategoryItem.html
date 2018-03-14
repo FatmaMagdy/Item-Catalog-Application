@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<!--MESSAGE FLASHING EXAMPLE -->
+	<div class="flash">
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+				{% for message in messages %}
+  					<li><strong>{{message}}</strong></li>
+  				{% endfor %}
+			</ul>
+		{% endif %}
+		{% endwith %}		
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<form action= "{{url_for('editCategoryItem', categories_id = category.id, items_id = item.id)}}" method = 'POST'>
+				<p>Name:</p>
+				<input type = 'text' name = 'name' placeholder = '{{item.name}}'>
+				</br>
+				<p>Description:</p>
+				<input type = 'text' name = 'description' placeholder = '{{item.description}}'>
+				</br>
+				<p>Price:</p>
+				<input type = 'text' name = 'price' placeholder = '{{item.price}}'>
+				</br></br>
+				<input type='submit' value='Edit'>
+			</form>
+			<a href= "{{url_for('showItems',categories_id = item.categories_id)}}">Cancel</a>			
+		</div>
+	</div>
+
+{% endblock %}

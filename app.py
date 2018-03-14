@@ -13,7 +13,7 @@ app = Flask(__name__)
 # Google client id
 CLIENT_ID = json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
-APPLICATION_NAME = "Restaurant Menu Application"
+APPLICATION_NAME = "Item Catalog Application"
 
 # connect to the data base
 engine = create_engine('sqlite:///itemCatalogWithUsers.db')
@@ -282,7 +282,7 @@ def editCategoryItem(categories_id,items_id):
 		return redirect('/login')
 	edited_item = session.query(Items).filter_by(id = items_id).one()
 	category = session.query(Categories).filter_by(id = categories_id).one()
-	if login_session['user_id'] != restaurant.user_id:
+	if login_session['user_id'] != category.user_id:
 		return "<script>function myFunction() {alert('You are not authorized to edit items to this category. Please create your own category in order to edit items.');}</script><body onload='myFunction()''>"
 	if request.method == 'POST':
 		if request.form['name']:
@@ -306,7 +306,7 @@ def deleteCategoryItem(categories_id,items_id):
 		return redirect('/login')
 	deleted_item = session.query(Items).filter_by(id =items_id).one()
 	category = session.query(Categories).filter_by(id = categories_id).one()
-	if login_session['user_id'] != restaurant.user_id:
+	if login_session['user_id'] != category.user_id:
 		return "<script>function myFunction() {alert('You are not authorized to delete items to this category. Please create your own category in order to delete items.');}</script><body onload='myFunction()''>"
 	if request.method == 'POST':
 		session.delete(deleted_item)
